@@ -5,16 +5,19 @@ function TickerList(props) {
 
     const { tickers } = props
 
+    const tickerKeys = Object.keys(tickers)
+
     const renderTickers = () => {
+
         return (
-            tickers.map(t => {
-                return <Ticker ticker={t} />
+            tickerKeys.map(t => {
+                return <Ticker ticker={tickers[t]} />
             })
         )
     }
 
     return (
-        <div>{renderTickers()}</div>
+        <div className='ticker__list'>{renderTickers()}</div>
     )
 }
 

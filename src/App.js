@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import TickerList from './components/TickerList'
 import SearchBar from './components/SearchBar'
+import Chart from 'chart.js/auto'
 import axios from 'axios'
 import './App.css';
 
@@ -15,8 +16,8 @@ function App() {
     axios.get('https://api.twelvedata.com/time_series?&apikey=1989b02f54f8431d875d1c357e296cb3', {
       params: {
         symbol: ticker,
-        interval: '1day',
-        output: '100'
+        interval: '1week',
+        output: '200'
       }
     }).then((res, err) => {
       console.log(res.code)
@@ -28,7 +29,6 @@ function App() {
   }, [ticker])
 
   const validateTicker = (t, code) => {
-    console.log(code, t)
     if (code === 200) {
       tickers.push(t)
       return true
@@ -36,13 +36,12 @@ function App() {
     return false
   }
 
-  console.log(tickers)
-
   const handleSubmit = (e, term) => {
     e.preventDefault()
     setTicker(term)
   }
 
+  console.log(tickerObjects)
 
   return (
     <div className="App">
@@ -50,7 +49,7 @@ function App() {
         MyFy
       </header>
       <SearchBar handleSubmit={handleSubmit} />
-      <TickerList tickers={tickers} />
+      <TickerList tickers={tickerObjects} />
 
     </div>
   );

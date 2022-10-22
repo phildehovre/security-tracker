@@ -3,8 +3,15 @@ import React from 'react'
 function Ticker(props) {
 
     const { ticker } = props
+
+    console.log(ticker)
+
     return (
-        <div>{ticker}</div>
+        <div className='ticker__slice'>{ticker.meta.symbol}
+            <div>
+                {ticker.values[0].close + ' ' + ticker.meta.currency}
+            </div>
+        </div>
     )
 }
 
