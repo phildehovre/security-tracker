@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import jwt_decode from 'jwt-decode'
-import { client_id } from '../Secrets/auth'
+import React, { useEffect, useState, useContext } from 'react'
 
 export const AuthContext = React.createContext()
 
+export function useAuth() {
+    return useContext(AuthContext)
+}
 
 function AuthProvider({ children }) {
 
     const [auth, setAuth] = useState(false)
-    const [user, setUser] = useState(null)
-
-    const handleCallbackResponse = (res) => {
-        const userObject = jwt_decode(res.credential)
-        setAuth(userObject.email_verified)
-        setUser(userObject)
-    }
-
-    useEffect(() => {
-        /* global google */
-        google.accounts.id.initialize({
-            client_id: client_id,
-            callback: handleCallbackResponse
-        });
-    })
+    const [user, setUser] = useState('PLACEHOLDER')
 
     return (
         <AuthContext.Provider value={{ auth, user }}>

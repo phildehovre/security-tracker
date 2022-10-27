@@ -9,6 +9,13 @@ export function SecuritiesProvider({ children }) {
     const [tickerObjects, setTickerObjects] = useState({})
     let tickers = []
 
+    const validateTicker = (t, code) => {
+        if (code === 200) {
+            tickers.push(t)
+            return true
+        }
+        return false
+    }
     useEffect(() => {
         axios.get('https://api.twelvedata.com/time_series?&apikey=1989b02f54f8431d875d1c357e296cb3', {
             params: {
@@ -17,7 +24,6 @@ export function SecuritiesProvider({ children }) {
                 output: '200'
             }
         }).then((res, err) => {
-            console.log(res.code)
             validateTicker(ticker, res.code)
             if (res.data.code !== 400) {
                 setTickerObjects(prev => ({ ...prev, [ticker]: res.data }))
@@ -25,13 +31,6 @@ export function SecuritiesProvider({ children }) {
         })
     }, [ticker])
 
-    const validateTicker = (t, code) => {
-        if (code === 200) {
-            tickers.push(t)
-            return true
-        }
-        return false
-    }
 
     const handleSubmit = (e, term) => {
         setTicker(term)

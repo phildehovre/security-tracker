@@ -3,14 +3,12 @@ import SearchBar from './components/SearchBar'
 import './App.css';
 import { SecuritiesProvider } from './Contexts/SecuritiesContext';
 import AuthProvider from './Contexts/AuthContext';
-import Login from './components/Login';
+import LoginPage from './Pages/loginPage';
+import Nav from './components/Nav';
+import { auth } from './Util/firebase'
 
 
 function App() {
-
-  const userLoggedIn = localStorage.getItem('isAuth')
-
-  console.log('Logged in:', userLoggedIn)
 
   return (
     <div className="App">
@@ -18,15 +16,16 @@ function App() {
       </header>
 
       {
-        userLoggedIn ? (
+        auth.currentUser ? (
           <AuthProvider>
             <SecuritiesProvider>
+              <Nav />
               <SearchBar />
               <TickerList />
             </SecuritiesProvider>
           </AuthProvider>
         ) :
-          <Login />
+          <LoginPage />
       }
 
     </div>

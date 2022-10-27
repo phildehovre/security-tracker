@@ -1,9 +1,16 @@
 import React from 'react'
-import Login from '../components/Login'
+import SignIn from '../components/SignIn'
+import LogIn from '../components/LogIn'
+import { auth } from '../Util/firebase'
+
 
 function login() {
-    return (
-        <Login />
+
+
+    return (<>
+        {/* <LogIn /> */}
+        <SignIn />
+    </>
     )
 }
 

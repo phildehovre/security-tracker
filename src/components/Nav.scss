@@ -1,0 +1,13 @@
+.nav {
+    width: 100vw;
+    height: fit-content;
+    background-color: rgb(255, 217, 161);
+    display: flex;
+    justify-content: space-around;
+
+    ul {
+        display: flex;
+        justify-content: space-evenly;
+        width: 50%;
+    }
+}
