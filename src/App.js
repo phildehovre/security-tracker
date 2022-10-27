@@ -10,7 +10,7 @@ function App() {
 
   const userLoggedIn = localStorage.getItem('isAuth')
 
-  console.log(userLoggedIn)
+  console.log('Logged in:', userLoggedIn)
 
   return (
     <div className="App">
