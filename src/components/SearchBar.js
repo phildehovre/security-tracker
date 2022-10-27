@@ -1,13 +1,15 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useContext } from 'react'
+import { SecuritiesContext } from '../Contexts/SecuritiesContext'
 
 
-function SearchBar(props) {
+function SearchBar() {
 
-    const { handleSubmit } = props
+    const { handleSubmit } = useContext(SecuritiesContext)
 
     const [searchTerm, setSearchTerm] = useState('')
 
     const onSubmit = (e, term) => {
+        e.preventDefault()
         handleSubmit(e, term)
         setSearchTerm('')
     }

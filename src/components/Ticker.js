@@ -4,7 +4,6 @@ function Ticker(props) {
 
     const { ticker } = props
 
-    console.log(ticker)
 
     return (
         <div className='ticker__slice'>{ticker.meta.symbol}
