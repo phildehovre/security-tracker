@@ -1,18 +1,18 @@
-import React, { } from 'react'
+import React, { useContext } from 'react'
 import './Login.scss'
 import SignInButton from './SignInButton'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAuth } from '../Contexts/AuthContext'
+import { AuthContext } from '../Contexts/AuthContext'
 import { uuidv4 } from '@firebase/util'
 
 
 function Login() {
 
-    const auth = useAuth()
+    const { signup } = useAuth()
 
-    console.log(useAuth)
 
     const schema = yup.object().shape({
         firstName: yup.string().required(),
@@ -29,8 +29,9 @@ function Login() {
         resolver: yupResolver(schema)
     })
 
+
     const onSubmitHandler = (data) => {
-        console.log(data);
+        signup(data.email, data.password)
         reset();
     }
 

@@ -10,24 +10,24 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAMqICOpHjXjCiZNCljdFQ_O6vAr6WSnBA",
-//     authDomain: "myfi-451b5.firebaseapp.com",
-//     projectId: "myfi-451b5",
-//     storageBucket: "myfi-451b5.appspot.com",
-//     messagingSenderId: "58327184329",
-//     appId: "1:58327184329:web:2f30788f1d3455c092ee18",
-//     measurementId: "G-9QHF3GR7CE"
-// };
 const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINS_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-    measurementId: process.env.REACT_APP_FIREBASE_MEASURMENT_ID
+    apiKey: "AIzaSyAMqICOpHjXjCiZNCljdFQ_O6vAr6WSnBA",
+    authDomain: "myfi-451b5.firebaseapp.com",
+    projectId: "myfi-451b5",
+    storageBucket: "myfi-451b5.appspot.com",
+    messagingSenderId: "58327184329",
+    appId: "1:58327184329:web:2f30788f1d3455c092ee18",
+    measurementId: "G-9QHF3GR7CE"
 };
+// const firebaseConfig = {
+//     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+//     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+//     projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+//     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+//     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINS_SENDER_ID,
+//     appId: process.env.REACT_APP_FIREBASE_APP_ID,
+//     measurementId: process.env.REACT_APP_FIREBASE_MEASURMENT_ID
+// };
 
 console.log(process.env.REACT_APP_CUSTOM)
 

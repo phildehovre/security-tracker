@@ -1,6 +1,8 @@
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useEffect, useState, useContext } from 'react'
+import { auth } from '../Util/firebase'
 
-export const AuthContext = React.createContext()
+export const AuthContext = React.createContext({})
 
 export function useAuth() {
     return useContext(AuthContext)
@@ -8,13 +10,30 @@ export function useAuth() {
 
 function AuthProvider({ children }) {
 
-    const [auth, setAuth] = useState(false)
-    const [user, setUser] = useState('PLACEHOLDER')
+    function signup(email, password) {
+        createUserWithEmailAndPassword(auth, email, password).then((user) => {
+            setCurrentUser(user)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
+    // useEffect(() => {
+    //     const unsubscribe = auth.onAuthStateChanged(user => {
+    //         setCurrentUser(user)
+    //     })
+    //     return unsubscribe
+    // }, [])
+
+    const [currentUser, setCurrentUser] = useState(null)
+
+
+    const value = { currentUser, signup }
 
     return (
-        <AuthContext.Provider value={{ auth, user }}>
+        <AuthContext.Provider value={{ ...value }} >
             {children}
-        </AuthContext.Provider>
+        </ AuthContext.Provider>
     )
 }
 
